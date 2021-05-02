@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from './pages/home';
+import Register from './components/register';
+import Login from './components/login';
+import Navbar from './components/Navbar';
+import React from 'react';
+import IradioProvider from './contexts/IradioContext';
+import { BrowserRouter, Route }from 'react-router-dom';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <IradioProvider>
+          <Navbar />
+          <Route exact path="/">
+            <Home />
+          </Route> 
+          <Route exact path="/register">
+            <Register/>
+          </Route>
+          <Login />
+        </IradioProvider>
+      </BrowserRouter>
     </div>
   );
 }
